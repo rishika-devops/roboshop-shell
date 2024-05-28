@@ -24,18 +24,24 @@ else
 echo "u r a root user"
 fi
 dnf module disable nodejs -y &>> $LOGFILE
-validate $? "disabling mongodb"
+validate $? "disabling mnodejs"
 
 dnf module enable nodejs:18 -y &>> $LOGFILE
-validate $? "enaling mongodb"
+validate $? "enaling nodejs"
 
 dnf install nodejs -y &>> $LOGFILE
-validate $? "installing mongodb"
+validate $? "installing nodejs"
 
-useradd roboshop &>> $LOGFILE
-validate $? "adding roboshop user"
+id roboshop
+if [ $? -ne 0 ]
+then
+useradd roboshop
+validate $? "roboshop user creation"
+else
+echo -e "$y roboshop user already exists $N"
+fi
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE
 validate $? "creating app directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
@@ -44,7 +50,7 @@ validate $? "downloading catalogue code"
 cd /app &>> $LOGFILE
 validate $? "changing to app dir"
  
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
 validate $? "unzipping catalogue code"
 
 npm install &>> $LOGFILE
