@@ -43,6 +43,9 @@ validate $? "downloading catalogue code"
 
 cd /app &>> $LOGFILE
 validate $? "changing to app dir"
+ 
+unzip /tmp/catalogue.zip &>> $LOGFILE
+validate $? "unzipping catalogue code"
 
 npm install &>> $LOGFILE
 validate $? "installing dependancies"
