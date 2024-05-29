@@ -36,7 +36,7 @@ id roboshop
 if [ $? -ne 0 ]
 then
 useradd roboshop 
-validate "adding roboshop user"
+validate  $? "adding roboshop user"
 else 
 echo "user roboshop already exists"
 fi
