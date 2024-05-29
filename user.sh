@@ -75,5 +75,5 @@ validate $? "copying mongo repo"
 dnf install mongodb-org-shell -y &>> $LOGFILE
 validate $? "installing mongodb client"
 
-mongo --host mongodb.sowjanyaaws.xyz </app/schema/user.js &>> $LOGFILE
+mongo --host mongodb.sowjanyaaws.online </app/schema/user.js &>> $LOGFILE
 validate $? "loading default user data"
