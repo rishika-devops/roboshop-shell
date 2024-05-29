@@ -42,11 +42,11 @@ validate $? "downloading nginx content"
 cd /usr/share/nginx/html &>> $LOGFILE
 validate $? "changing to nginx directory"
 
-unzip /tmp/web.zip
+unzip /tmp/web.zip &>> $LOGFILE
 validate $? "unzipping web content"
 
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf 
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>> $LOGFILE
 validate $? "copying reverse proxy information"
 
-systemctl restart nginx 
+systemctl restart nginx  &>> $LOGFILE
 validate $? "restarting nginx"
