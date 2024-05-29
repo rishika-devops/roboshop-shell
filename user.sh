@@ -32,11 +32,16 @@ validate $? "enabling nodejs 18 version"
 
 dnf install nodejs -y &>> $LOGFILE
 validate $? "installing nodejs"
-
-useradd roboshop &>> $LOGFILE
+id roboshop
+if [ $? -ne 0 ]
+then
+useradd roboshop 
 validate "adding roboshop user"
+else 
+echo "user roboshop already exists"
+fi
 
-mkdir /app &>> $LOGFILE
+mkdir  -p /app &>> $LOGFILE
 validate "creating app directory"
 
 curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
@@ -45,7 +50,7 @@ validate $? "downloading user code"
 cd /app &>> $LOGFILE
 validate $? "changing to app directory"
 
-unzip /tmp/user.zip &>> $LOGFILE
+unzip -o /tmp/user.zip &>> $LOGFILE
 validate $? "unzipping user code"
 
 npm install &>> $LOGFILE 
