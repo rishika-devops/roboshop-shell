@@ -27,7 +27,7 @@ fi
 dnf install maven -y &>> LOGFILE 
 validate $? "installing maven"
 
-dnf install maven -y &>> LOGFILE 
+useradd roboshop &>> LOGFILE 
 validate $? "adding roboshop user"
 
 
