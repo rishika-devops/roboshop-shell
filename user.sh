@@ -32,11 +32,12 @@ validate $? "enabling nodejs 18 version"
 
 dnf install nodejs -y &>> $LOGFILE
 validate $? "installing nodejs"
+
 id roboshop
 if [ $? -ne 0 ]
 then
 useradd roboshop 
-validate  $? "adding roboshop user"
+echo "roboshop user creation"
 else 
 echo "user roboshop already exists"
 fi
