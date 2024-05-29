@@ -16,7 +16,7 @@ validate() {
 }
 
 ID=$(id -u)
-if [ $? -ne 0 ]
+if [ $ID -ne 0 ]
 then 
 echo -e "$R error::pls run with root access $N"
 exit 1
