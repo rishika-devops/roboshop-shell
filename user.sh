@@ -6,7 +6,7 @@ Y="\e[33m"
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 echo "script started executing at $TIMESTAMP"
-validate() {
+validate(){
     if [ $1 -ne 0 ]
     then
     echo -e "$R $2 is failed $N"
