@@ -41,6 +41,7 @@ else
 echo -e "$y roboshop user already exists $N"
 fi
 
+
 mkdir -p /app &>> $LOGFILE
 validate $? "creating app directory"
 
