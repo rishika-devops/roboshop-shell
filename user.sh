@@ -44,7 +44,7 @@ echo "user roboshop already exists"
 fi
 
 mkdir  -p /app &>> $LOGFILE
-validate "creating app directory"
+validate  $? "creating app directory"
 
 curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>> $LOGFILE
 validate $? "downloading user code"
